@@ -1,9 +1,9 @@
 pipeline {
     agent any
     stages {
-        stage('Build') {
+        stage('Update pom') {
             steps {
-                sh 'mvn clean package'
+                sh 'echo upd pom'
             }
         }
         stage('Test') {
@@ -11,9 +11,24 @@ pipeline {
                 sh 'mvn test'
             }
         }
-        stage('archiveArtifacts') {
+        stage('Package') {
             steps {
-                sh 'artifacts: TestJin.2.0.0-SNAPSHOT, fingerprint: true, onlyIfSuccessful: true'
+                sh 'mvn clean package'
+            }
+        }
+        stage('Deploy To Maven') {
+            steps {
+                sh 'echo deploy'
+            }
+        }
+        stage('ArchiveArtifacts') {
+            steps {
+                sh 'archiveArtifacts artifacts: TestJin.2.0.0-SNAPSHOT, fingerprint: true, onlyIfSuccessful: true'
+            }
+        }
+        stage('Build DockerImage') {
+            steps {
+                sh 'echo build docker image'
             }
         }
     }

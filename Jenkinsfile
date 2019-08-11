@@ -1,6 +1,6 @@
 pipeline {
     agent any
-    stages {
+    node {
         stage('Update pom') {
             steps {
                 sh 'echo upd pom'

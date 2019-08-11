@@ -13,7 +13,7 @@ pipeline {
         }
         stage('archiveArtifacts') {
             steps {
-                sh archiveArtifacts artifacts: 'TestJin.2.0.0-SNAPSHOT', fingerprint: true, onlyIfSuccessful: true
+                sh 'artifacts: TestJin.2.0.0-SNAPSHOT, fingerprint: true, onlyIfSuccessful: true'
             }
         }
     }

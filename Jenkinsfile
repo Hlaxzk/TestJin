@@ -1,6 +1,6 @@
 pipeline {
     agent any
-    node {
+    stages {
         stage('Update pom') {
             steps {
                 sh 'echo upd pom'
@@ -23,7 +23,7 @@ pipeline {
         }
         stage('ArchiveArtifacts') {
             steps {
-                sh 'archiveArtifacts artifacts: TestJin.2.0.0-SNAPSHOT, fingerprint: true, onlyIfSuccessful: true'
+                sh 'echo ARC'
             }
         }
         stage('Build DockerImage') {

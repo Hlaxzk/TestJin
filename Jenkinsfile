@@ -11,5 +11,10 @@ pipeline {
                 sh 'mvn test'
             }
         }
+        stage('archiveArtifacts') {
+            steps {
+                sh archiveArtifacts artifacts: 'TestJin.2.0.0-SNAPSHOT', fingerprint: true, onlyIfSuccessful: true
+            }
+        }
     }
 }
